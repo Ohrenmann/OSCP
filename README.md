@@ -7,7 +7,7 @@
     * [enum4linux](#enum4linux)
     * [smbclient](#smbclient)
     * [ftp](#ftp)
-    * [snmpwalker](#snmpwalker)
+    * [snmpwalk](#snmpwalk)
 * Web application
     * [LFI](#LFI)
     * [RFI](#RFI)
@@ -80,7 +80,7 @@ $ smbclient //DNSname/wwwroot -I ip -N
 user: anonymous
 pass: anonymous
 ```
-## snmpwalker
+## snmpwalk
 ```
 $ snmpwalk ip -c public -v 2c > result.txt
 ```
