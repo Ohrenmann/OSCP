@@ -116,6 +116,12 @@ $ export PATH=$PATH:/bin/
 $ export PATH=$PATH:/usr/bin
 ```
 ### Password Crack
+## crackpot (for LM & NTLM)
+check if hash has already been cracked
+```
+$ https://cracker.offensive-security.com/
+Use Priority code from personal OSCP profile page
+```
 ## john
 first obtain /etc/shadow and /etc/passwd, then
 ```
@@ -130,6 +136,12 @@ $ hydra -l root -P password-file.txt 10.11.1.219 ssh
 ```
 $ ncrack -vv --user offsec -P password-file.txt rdp://10.11.1.35
 ```
+
+## hashcat
+```
+$ hashcat -m 1000 NTLMHASHNTHASH /usr/share/wordlists/rockyou.txt -O
+```
+
 ### Privilege Escalation
 ## Linux
 #### Information
