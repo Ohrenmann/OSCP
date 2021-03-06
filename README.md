@@ -291,9 +291,10 @@ $'\r': command not found convert win dos to unix, it need to convert win dos to 
 ```
 $ dos2unix xxx.sh
 ```
-## use python to call bash
+## use python to call bash (with TTY)
 ```
 $ python -c 'import pty;pty.spawn("/bin/bash")'
+$ python3 -c 'import pty;pty.spawn("/bin/bash")'
 ```
 ## can not find ifconfig
 * ip a
