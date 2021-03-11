@@ -71,10 +71,21 @@ $ enum4linux -U -o ip
 * discover directory and os, smb version
 ```
 $ smbclient -L \\DNSname -I ip -N
+$ smbclient -L "//10.10.10.3/" –N 
 ```
 * log in smb server
 ```
 $ smbclient //DNSname/wwwroot -I ip -N
+```
+## smbmap
+*SMBMap allows users to enumerate samba share drives across an entire domain. List share drives, drive permissions, share contents, upload/download functionality, file name auto-download pattern matching, and even execute remote commands.
+```
+smbmap -H 10.10.10.3 | tee recon/smbmap_10.10.10.3.txt
+```
+```
+$ python smbmap.py -u jsmith -p password1 -d workgroup -H 192.168.0.1
+$ python smbmap.py -u jsmith -p 'aad3b435b51404eeaad3b435b51404ee:da76f2c4c96028b7a6111aef4a50a94d' -H 172.16.0.20
+$ python smbmap.py -u 'apadmin' -p 'asdf1234!' -d ACME -H 10.1.3.30 -x 'net group "Domain Admins" /domain'
 ```
 ## ftp
 * try to login as anonymous
